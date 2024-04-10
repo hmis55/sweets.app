@@ -1,1 +1,8 @@
-<h1>マイページ</h1>
+<h4><%= @user.name %>のマイページ</h4>
+
+　　　<% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
+        </tr>
+      <% end %>

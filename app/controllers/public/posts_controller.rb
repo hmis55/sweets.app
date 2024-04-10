@@ -6,11 +6,16 @@ class Public::PostsController < ApplicationController
   # 投稿データの保存
   def create
     @post = Post.new(post_image_params)
-    @post.user_id = current_user.id
+    @post.id = current_user.id
     @post.save
-    redirect_to post_path
+    redirect_to posts_path
   end
   
+  def index
+   @user = current_user
+   @post = Post.new
+   @posts = Post.all
+  end
   
   # 投稿データのストロングパラメータ
   private
