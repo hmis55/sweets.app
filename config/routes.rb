@@ -9,7 +9,7 @@ devise_for :users, skip: [:passwords], controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :posts, only: [:show, :edit, :new, :index]
+    resources :posts, only: [:show, :edit, :new, :index, :create]
     resources :users, only: [:show, :edit, :update, :unsubscribe]
  end
 end
