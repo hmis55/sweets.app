@@ -1,0 +1,11 @@
+<h2>タイトル</h2>
+<p><%= @post.title %></p>
+
+<h2>本文</h2>
+<p><%= @post.body %></p>
+         <% if @user == current_user %>
+       <td><%= link_to "編集", edit_post_path(@post) %> </td>
+       <% end %>
+       <% if @user == current_user %>
+         <td><%= link_to "削除",post_path(@post), method: :delete %></td>
+       <% end %>
