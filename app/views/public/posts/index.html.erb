@@ -17,7 +17,7 @@
            <% else %>
               <%= image_tag 'no_image', size: "100x100" %>
            <% end %>
-           <p><%= link_to @user.name, user_path(@user) %></p>
+           <p><%= link_to post.user.name, user_path(post.user) %></p>
           </td>
           <td><%= link_to post.title, post_path(post.id) %></td>
           <td><%= post.body %></td>
