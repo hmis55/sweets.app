@@ -9,7 +9,11 @@ devise_for :users, skip: [:passwords], controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :posts, only: [:show, :edit, :new, :index, :create, :destroy, :update]
+
+    #post_commrntはpostに紐づいているため、ネストさせる
+    resources :posts, only: [:show, :edit, :new, :index, :create, :destroy, :update] do
+     resources :post_comments, only: [:create, :destroy]
+    end
     resources :users, only: [:show, :edit, :update, :unsubscribe]
  end
 end

@@ -1,10 +1,39 @@
+<!--ユーザー詳細-->
 <!--showページにアクセスしたユーザーが本人の場合は編集ページと会員情報が表示されるようにする-->
 <% if @user == current_user %>
   <h4><%= @user.name %>のマイページ</h4>
   <h4><%= @user.name %></h4>
   <h4><%= @user.email %></h4>
 
-  <h4><%= link_to '会員情報編集', edit_user_path %></h4>
+  <h4><%= link_to '編集', edit_user_path %></h4>
 <% else %>
-  <h4><%= @user.name %></h4>
+  <h4>ユーザー名: <%= @user.name %></h4>
 <% end %>
+
+<!--ユーザーの投稿一覧-->
+<table class='table table-hover table-inverse'>
+    <thead>
+      <th></th>
+      <th>タイトル</th>
+      <th>説明</th>
+      <th colspan="3"></th>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td>
+           <% if post.image.attached? %>
+              <%= image_tag post.image, size: "100x100" %>
+           <% else %>
+              <%= image_tag 'no_image', size: "100x100" %>
+           <% end %>
+           <p><%= link_to post.user.name, user_path(post.user) %></p>
+          </td>
+          <td><%= link_to post.title, post_path(post.id) %></td>
+          <td><%= post.body %></td>
+          <!--コメント数を表示-->
+          <td><%= "#{post.post_comment.count} コメント" %></td>
+        </tr>
+      <% end %>
+     </tboy>
+</table>

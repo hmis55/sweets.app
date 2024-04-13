@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    
+    @posts = @user.post
   end
 
   def edit
@@ -26,5 +26,9 @@ class Public::UsersController < ApplicationController
   
   def user_params
    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def post_params
+    params.require(:post).permit(:title, :body, :image, :user_id)
   end
 end

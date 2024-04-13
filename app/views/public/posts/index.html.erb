@@ -21,6 +21,8 @@
           </td>
           <td><%= link_to post.title, post_path(post.id) %></td>
           <td><%= post.body %></td>
+          <!--コメント数を表示-->
+          <td><%= "#{post.post_comment.count} コメント" %></td>
         </tr>
       <% end %>
     </tbody>
