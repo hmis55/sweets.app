@@ -8,8 +8,11 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+    if @post.save
+      redirect_to posts_path notice: "投稿が成功しました."
+    else
+      render :new
+    end
   end
 
   def index
@@ -29,9 +32,9 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post.id), notice: "Post was successfully updated."
+      redirect_to post_path(@post.id), notice: "編集が成功しました."
     else
-      render :post_path
+      render :edit
     end
   end
 

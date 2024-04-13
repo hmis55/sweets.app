@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
  has_many :post, dependent: :destroy
  has_many :post_comment, dependent: :destroy
+ 
+ #バリデーション
+  validates :name, presence: true
+  validates :email, presence: true
 end
