@@ -1,1 +1,10 @@
-<h4><%= @user.name %>のマイページ</h4>
+<!--showページにアクセスしたユーザーが本人の場合は編集ページと会員情報が表示されるようにする-->
+<% if @user == current_user %>
+  <h4><%= @user.name %>のマイページ</h4>
+  <h4><%= @user.name %></h4>
+  <h4><%= @user.email %></h4>
+
+  <h4><%= link_to '会員情報編集', edit_user_path %></h4>
+<% else %>
+  <h4><%= @user.name %></h4>
+<% end %>
