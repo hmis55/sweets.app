@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-
+before_action :is_matching_login_user, only: [:edit, :update, :withdraw] 
 
 
   def mypage
@@ -44,5 +44,12 @@ class Public::UsersController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :image, :user_id)
+  end
+  
+  def is_matching_login_user
+   user = User.find(params[:id])
+      unless user.id == current_user.id
+        redirect_to root_path
+      end
   end
 end

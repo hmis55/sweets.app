@@ -1,5 +1,5 @@
 <h2>投稿編集ページ</h2>
-
+<%= flash[:notice] %>
 <% if @post.errors.any? %>
   <%= @post.errors.count %>件のエラーが発生しました
   <ul>
