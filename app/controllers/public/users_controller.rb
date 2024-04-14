@@ -1,6 +1,12 @@
 class Public::UsersController < ApplicationController
 
 
+
+  def mypage
+    @user = current_user
+    @posts = current_user.post
+  end
+
   def show
     @user = User.find(params[:id])
     @posts = @user.post
@@ -9,7 +15,7 @@ class Public::UsersController < ApplicationController
   def edit
      @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -19,15 +25,23 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def unsubscribe
+  #退会機能
+  def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_active: false)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    #トップ顔面のurlができたら変更する!!
+    redirect_to root_path
   end
-  
+
+
   private
-  
+
   def user_params
    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
+
   def post_params
     params.require(:post).permit(:title, :body, :image, :user_id)
   end

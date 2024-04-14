@@ -9,11 +9,19 @@ devise_for :users, skip: [:passwords], controllers: {
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-
+    get 'users/mypage', to: 'users#mypage', as: 'mypage'
+    
+    #退会機能画面
+    get  'users/unsubscribe' => 'users#unsubscribe'
+    # 論理削除用のルーティング
+    patch 'users/withdraw' => 'users#withdraw'
+    
     #post_commrntはpostに紐づいているため、ネストさせる
     resources :posts, only: [:show, :edit, :new, :index, :create, :destroy, :update] do
-     resources :post_comments, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
-    resources :users, only: [:show, :edit, :update, :unsubscribe]
+    resources :users, only: [:show, :edit, :update]
+    
+    
  end
 end
