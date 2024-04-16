@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-before_action :is_matching_login_user, only: [:edit, :update, :withdraw] 
+before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
 
 
   def mypage
@@ -27,11 +27,9 @@ before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
 
   #退会機能
   def withdraw
-    @user = User.find(current_user.id)
-    @user.update(is_active: false)
+    current_user.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
-    #トップ顔面のurlができたら変更する!!
     redirect_to root_path
   end
 
@@ -45,11 +43,11 @@ before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
   def post_params
     params.require(:post).permit(:title, :body, :image, :user_id)
   end
-  
+
   def is_matching_login_user
-   user = User.find(params[:id])
-      unless user.id == current_user.id
-        redirect_to root_path
-      end
+    user = User.find(current_user.id)
+    unless user.id == current_user.id
+      redirect_to new_customer_session_path
+    end
   end
 end
