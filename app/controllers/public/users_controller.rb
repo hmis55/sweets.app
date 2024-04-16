@@ -45,9 +45,16 @@ before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
   end
 
   def is_matching_login_user
-    user = User.find(current_user.id)
-    unless user.id == current_user.id
-      redirect_to new_customer_session_path
+    unless current_user
+      redirect_to new_user_session_path
+      return
+    end
+  
+    if params[:id].present?
+      post = Post.find(params[:id])
+      unless post.user_id == current_user.id
+        redirect_to root_path
+      end
     end
   end
 end
