@@ -24,7 +24,11 @@ devise_for :users, skip: [:passwords], controllers: {
       resources :post_comments, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update]
-    
-    
- end
+    end
+  
+  namespace :admin do
+    root to: "homes#top"
+    resources :users, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :edit, :update, :destroy]
+  end
 end

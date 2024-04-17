@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-10 mx-auto">
+
+      <h4 class="col-2 my-3 bg-light">会員一覧</h4>
+
+      <div class="col-lg-9 mx-auto">
+        <!--会員一覧テーブル-->
+        <table class="table">
+          <!--テーブルヘッダー-->
+          <thead class="thead-light">
+            <tr>
+              <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <!--会員をeachで表示-->
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><!--名前押すと会員詳細に飛ぶ-->
+                    <%= link_to user.name, admin_user_path(user) %>
+                </td>
+                <td><%= user.email %></td>
+                <!--会員ステータス-->
+                <td>
+                  <% if user.is_active == true %>
+                    <p class="text-success font-weight-bolder">有効</p>
+                  <% else %>
+                    <p class="text-secondary font-weight-bolder">退会</p>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

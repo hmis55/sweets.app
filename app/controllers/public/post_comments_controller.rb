@@ -1,6 +1,9 @@
 class Public::PostCommentsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:create, :destroy]
+  
+
 
 
   def create
@@ -10,8 +13,8 @@ class Public::PostCommentsController < ApplicationController
     comment.save
     redirect_to post_path
   end
-  
-  
+
+
   def destroy
     post_comment = PostComment.find(params[:id])
     post_id = post_comment.post_id
@@ -20,6 +23,12 @@ class Public::PostCommentsController < ApplicationController
   end
 
   private
+
+  def authenticate_admin!
+    unless current_user && current_user.admin?
+      redirect_to root_path, alert: "You are not authorized to access this page."
+    end
+  end
 
   def post_comment_params
     params.require(:post_comment).permit(:comment)
@@ -30,7 +39,7 @@ class Public::PostCommentsController < ApplicationController
       redirect_to new_user_session_path
       return
     end
-  
+
     if params[:id].present?
       post = Post.find(params[:id])
       unless post.user_id == current_user.id

@@ -1,8 +1,7 @@
-<h4><%= @user.name %>さんの投稿一覧</h4>
+<div class='col-md-8 offset-md-1'>
+  <h2>会員の投稿一覧ページ</h2>
 <%= flash[:notice] %>
-
-
-<table class='table table-hover table-inverse'>
+  <table class='table table-hover table-inverse'>
     <thead>
       <th></th>
       <th>タイトル</th>
@@ -16,15 +15,16 @@
            <% if post.image.attached? %>
               <%= image_tag post.image, size: "100x100" %>
            <% else %>
-              <%= image_tag 'no_image', size: "100x100" %>
+              <%= image_tag 'no_image.jpg', size: "100x100" %>
            <% end %>
-           <p><%= link_to post.user.name, user_path(post.user) %></p>
+           <p><%= link_to post.user.name, admin_user_path(post.user) %></p>
           </td>
-          <td><%= link_to post.title, post_path(post.id) %></td>
+          <td><%= link_to post.title, admin_post_path(post) %></td>
           <td><%= post.body %></td>
           <!--コメント数を表示-->
           <td><%= "#{post.post_comment.count} コメント" %></td>
         </tr>
       <% end %>
-     </tboy>
-</table>
+    </tbody>
+  </table>
+</div>

@@ -24,13 +24,24 @@
                     <%= link_to '新規投稿', new_post_path %>
                   </li>
                   <li class='mx-3'>
-                    <%= link_to 'マイページ', mypage_path %>
+                    <%= link_to 'マイページ', users_mypage_path%>
                   </li>
                   <li class='mx-3'>
                     <%= link_to 'About', about_path %>
                   </li>
                   <li class='mx-3'>
                     <%= link_to '投稿一覧', posts_path %>
+                  </li>
+                  
+                <% elsif admin_signed_in? %>
+                  <li class='mx-3'>
+                    <%= link_to "投稿一覧", admin_root_path %>
+                  </li>
+                  <li class='mx-3'>
+                    <%= link_to "会員一覧", admin_users_path %>
+                  </li>
+                  <li class='mx-3'>
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
                   </li>
                   
                 <% else%>
