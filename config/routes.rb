@@ -7,7 +7,7 @@ devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-
+   get "/search", to: "searches#search"
 
   scope module: :public do
     root to: 'homes#top'
@@ -26,7 +26,7 @@ devise_for :users, skip: [:passwords], controllers: {
     resources :users, only: [:show, :edit, :update]
     end
   
-  namespace :admin do
+    namespace :admin do
     root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :edit, :update, :destroy] do

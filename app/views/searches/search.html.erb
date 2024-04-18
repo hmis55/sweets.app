@@ -1,0 +1,50 @@
+<% if @model == 'user' %>
+  <h3>Users search for "<%= @content %>"</h3>
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <th></th>
+      <th>タイトル</th>
+      <th>説明</th>
+      <th colspan="3"></th>
+    </thead>
+    <tbody>
+      <% @records.each do |user| %>
+        <tr>
+          <td>
+           <% if user.image.attached? %>
+              <%= image_tag user.image, size: "100x100" %>
+           <% else %>
+              <%= image_tag 'no_image', size: "100x100" %>
+           <% end %>
+           <p><%= link_to user.name, user_path(user) %></p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% elsif @model == 'book' %>
+  <h3>Books search for "<%= @content %>"</h3>
+  <table class='table table-hover table-inverse'>
+    <thead>
+      <th></th>
+      <th>タイトル</th>
+      <th>説明</th>
+      <th colspan="3"></th>
+    </thead>
+    <tbody>
+      <% @records.each do |book| %>
+        <tr>
+          <td>
+           <% if book.image.attached? %>
+              <%= image_tag book.image, size: "100x100" %>
+           <% else %>
+              <%= image_tag 'no_image.jpg', size: "100x100" %>
+           <% end %>
+           <p><%= link_to book.title, book_path(book) %></p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
