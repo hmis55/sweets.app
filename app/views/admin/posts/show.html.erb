@@ -1,29 +1,45 @@
-<p><%= image_tag 'no_image', size: "100x100" %> </p>
-<h2>タイトル</h2>
-<p><%= @post.title %></p>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="text-center">
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image, class: "img-fluid" %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', class: "img-fluid" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h4>タイトル</h4>
+      <h4><%= @post.title %></h4>
+      <h4>説明</h4>
+      <p><%= @post.body %></p>
+      <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+      <p>コメント件数：<%= @post.post_comment.count %></p>
+    </div>
+  </div>
 
-<h2>本文</h2>
-<p><%= @post.body %></p>
-<p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-4">
+      <%= form_with(model: [@post, @post_comment], url: admin_post_post_comments_path(@post), class: "mt-3") do |f| %>
+        <%= f.text_area :comment, rows: '5', class: "form-control", placeholder: "コメントをここに記入してください" %>
+        <%= f.submit "送信する", class: "btn btn-primary mt-2" %>
+      <% end %>
+    </div>
+  </div>
 
-
-<td><%= link_to "編集", edit_admin_post_path(@post) %> </td>
-<td><%= link_to "削除",admin_post_path(@post), method: :delete %></td>
-
-
-
-<!--コメント機能-->
-<div>
-  <p>コメント件数：<%= @post.post_comment.count %></p>
-  <% @post.post_comment.each do |post_comment| %>
-    <%= post_comment.user.name %>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-      <%= link_to "削除", admin_post_path(post_id), method: :delete %>
-  <% end %>
-</div>
-<div>
-  <%= form_with(model: [@post, @post_comment], url: post_post_comments_path(@post)) do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに記入してください" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-4">
+      <h3>コメント</h3>
+      <% @post.post_comment.each do |post_comment| %>
+        <div class="border p-3 mb-3">
+          <%= post_comment.user.name %>（<%= post_comment.created_at.strftime('%Y/%m/%d') %>）<br>
+          <%= post_comment.comment %>
+          <% if post_comment.user == current_user %>
+            <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-sm mt-2" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
