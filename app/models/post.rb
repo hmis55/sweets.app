@@ -18,6 +18,6 @@ class Post < ApplicationRecord
         Post.where('title LIKE ?', "%#{content}")
       else
         Post.where('title LIKE ?', "%#{content}%")
-      end
+    end
   end
 end
