@@ -1,5 +1,4 @@
 class Admin::PostsController < ApplicationController
-  before_action :authenticate_admin!
   
   def new
     @post = Post.new
@@ -22,7 +21,8 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_id = @post.id
     @post.destroy
-    redirect_to admin_posts_path
+    #削除後にadminの投稿一覧ページ(topページに遷移)
+    redirect_to admin_root_path
   end
   
   def post_params
