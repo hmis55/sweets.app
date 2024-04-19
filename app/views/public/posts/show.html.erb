@@ -9,14 +9,31 @@
         <% end %>
       </div>
     </div>
+    <!--投稿内容とユーザー名などを表示する-->
     <div class="col-md-8">
-      <h2><%= @post.title %></h2>
+      <h4><%= @post.title %></h4>
+      <h4>説明</h4>
       <p><%= @post.body %></p>
       <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
       <p>コメント件数：<%= @post.post_comment.count %></p>
+      <!--いいね機能-->
+      <% if @post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_favorite_path(@post), method: :delete do %>
+        ♥<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+      <% else %>
+    <p>
+      <%= link_to post_favorite_path(@post), method: :post do %>
+        ♡<%= @post.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
     </div>
   </div>
-
+  
+<!--コメントを記入するフォーマット-->
   <div class="row mt-4">
     <div class="col-md-8 offset-md-4">
       <%= form_with model: [@post, @post_comment], class: "mt-3" do |f| %>
@@ -26,6 +43,7 @@
     </div>
   </div>
 
+<!--コメントを残す部分-->
   <div class="row mt-4">
     <div class="col-md-8 offset-md-4">
       <h3>コメント</h3>

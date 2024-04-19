@@ -3,11 +3,18 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :post_comment, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  
+  #いいね機能
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 
   #バリデーション
   validates :title, presence: true
   validates :body, presence: true
 
+  #検索機能
   def self.search_for(content, method)
     case method
       when 'perfect'

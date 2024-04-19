@@ -19,9 +19,10 @@ devise_for :users, skip: [:passwords], controllers: {
     # 論理削除用のルーティング
     patch 'users/withdraw' => 'users#withdraw'
     
-    #post_commrntはpostに紐づいているため、ネストさせる
+    #コメント機能、いいね機能
     resources :posts, only: [:show, :edit, :new, :index, :create, :destroy, :update] do
       resources :post_comments, only: [:create, :destroy]
+      resource :favorite, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update]
     end
