@@ -43,7 +43,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_id = @post.id
     @post.destroy
-    redirect_to posts_path
+    redirect_to mypage_path
   end
   # 投稿データのストロングパラメータ
   private
