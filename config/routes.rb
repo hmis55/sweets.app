@@ -24,8 +24,14 @@ devise_for :users, skip: [:passwords], controllers: {
       resources :post_comments, only: [:create, :destroy]
       resource :favorite, only: [:create, :destroy]
     end
-    resources :users, only: [:show, :edit, :update]
+    
+    #フォローフォロワー機能のルーティングをUserへネスト
+    resources :users, only: [:show, :edit, :update] do
+     resource :relationships, only: [:create, :destroy]
+    	get "followings" => "relationships#followings", as: "followings"
+    	get "followers" => "relationships#followers", as: "followers"
     end
+  end
   
     namespace :admin do
     root to: "homes#top"

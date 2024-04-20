@@ -12,8 +12,11 @@
     </div>
     <!--投稿内容とユーザー名などを表示する-->
     <div class="col-md-8">
+      <h4><投稿者></h4>
+      <h4><%= link_to @post.user.name, user_path(@post.user)%></h4>
+      <h4><タイトル></h4>
       <h4><%= @post.title %></h4>
-      <h4>説明</h4>
+      <h4><説明></h4>
       <p><%= @post.body %></p>
       <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
       <p>コメント件数：<%= @post.post_comment.count %></p>
