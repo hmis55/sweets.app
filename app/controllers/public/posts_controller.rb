@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :is_matching_login_user, only: [:create, :edit, :update, :destroy]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:new, :edit, :create, :update]
   
   def new

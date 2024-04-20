@@ -1,5 +1,6 @@
 class Public::PostCommentsController < ApplicationController
  before_action :authenticate_user!
+ before_action :ensure_guest_user
 
   def create
   post = Post.find(params[:post_id])
@@ -18,6 +19,12 @@ class Public::PostCommentsController < ApplicationController
 
   def post_comment_params
     params.require(:post_comment).permit(:comment)
+  end
+  
+  def ensure_guest_user
+    if current_user.email == "guest@example.com"
+      redirect_to user_path(current_user), notice: "この機能は会員登録後に使用可能となります。"
+    end
   end
 
 end

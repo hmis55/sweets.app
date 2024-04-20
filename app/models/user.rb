@@ -23,6 +23,7 @@ class User < ApplicationRecord
     end
   end
 
+
   def self.search_for(content, method)
     case method
       when 'perfect'
