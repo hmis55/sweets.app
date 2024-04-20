@@ -10,8 +10,12 @@
     <td><%= @user.email %></td>
   </tr>
 </table>
-
-<h4><%= link_to '編集', edit_user_path(@user) %></h4>
+  <!--ゲストログインで編集できないように設定-->
+  <% if @user.email != "guest@example.com" %>
+  <div class="row">
+    <%= link_to "編集",edit_user_path(@user) %>
+  </div>
+  <% end %>
 
 <table class='table table-hover table-inverse'>
     <thead>
@@ -58,7 +62,7 @@
        <% end %>
       </td>
     </tr>
-    
+
    <% end %>
   </tbody>
 </table>

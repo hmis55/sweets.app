@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :is_matching_login_user, only: [:create, :edit, :update, :destroy]
+  before_action :ensure_guest_user, only: [:new, :edit, :create, :update]
   
   def new
     @post = Post.new
@@ -51,5 +53,17 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :image, :user_id)
   end
+
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to root_path
+    end
+  end
   
+  def ensure_guest_user
+    if current_user.email == "guest@example.com"
+      redirect_to user_path(current_user), notice: "投稿される際は、会員登録をお願いします。"
+    end
+  end
 end

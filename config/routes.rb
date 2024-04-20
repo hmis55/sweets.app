@@ -34,4 +34,7 @@ devise_for :users, skip: [:passwords], controllers: {
       resources :post_comments, only: [:create, :destroy]
     end
   end
+    
+    #ゲストログイン
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
 end
