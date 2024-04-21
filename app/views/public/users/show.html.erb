@@ -1,22 +1,26 @@
-<h3><%= @user.name %>さんのマイページ</h3>
 <%= flash[:notice] %>
 
-
-<div class="row">
-  <div class="col-md-1">
-    <h4>フォロー数</h4>
-    <h4><%= @user.followings.count %></h4>
-  </div>
-  <div class="col-md-2">
-    <h4>フォロワー数</h4>
-    <h4><%=@user.followers.count %></h4>
-  </div>
+<table>
+  <tr>
+    <th>ユーザー名</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>フォロー数</th>
+    <td><%= @user.followings.count %></td>
+    <th>フォロワー数</th>
+    <td><%=@user.followers.count %></td>
+  </tr>
+  <tr>
+  <!--フォローフォロワー機能-->
+  <% if current_user %>
+  <td><%= render "public/relationships/btn", user: @user, options: { class: "follow-link" } %></td>
+  <% end %>
+  </tr>
 </div>
 
-<!--フォローフォロワー機能-->
-<% if current_user %>
-  <h4><%= render "public/relationships/btn", user: @user, options: { class: "follow-link" } %></h4>
-<% end %>
+
+
 
 <table class='table table-hover table-inverse'>
     <thead>

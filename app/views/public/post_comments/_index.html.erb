@@ -1,0 +1,11 @@
+<% post.post_comment.each do |post_comment| %>
+  <div class="border p-3 mb-3">
+  <%= post_comment.user.name %>（<%= post_comment.created_at.strftime('%Y/%m/%d') %>）<br>
+  <%= post_comment.comment %>
+  <% if post_comment.user == current_user %>
+    <!--remote trueで非同期通信実装 -->
+    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-sm mt-2", remote: true %>
+  <% end %>
+  </div>
+<% end %>
+  

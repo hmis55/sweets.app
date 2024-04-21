@@ -19,7 +19,10 @@
       <h4><説明></h4>
       <p><%= @post.body %></p>
       <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-      <p>コメント件数：<%= @post.post_comment.count %></p>
+      <!--コメント件数-->
+      <td id="comment_counter">
+        <%= render "public/post_comments/counter", post: @post %>
+      </td>
       <!--いいね機能-->
       <% if @post.favorited_by?(current_user) %>
     <p>
@@ -36,30 +39,15 @@
   <% end %>
     </div>
   </div>
-
-<!--コメントを記入するフォーマット-->
-  <div class="row mt-4">
-    <div class="col-md-8 offset-md-4">
-      <%= form_with model: [@post, @post_comment], class: "mt-3" do |f| %>
-        <%= f.text_area :comment, rows: '5', class: "form-control", placeholder: "コメントをここに記入してください" %>
-        <%= f.submit "送信する", class: "btn btn-primary mt-2" %>
-      <% end %>
-    </div>
-  </div>
-
-<!--コメントを残す部分-->
   <div class="row mt-4">
     <div class="col-md-8 offset-md-4">
       <h3>コメント</h3>
-      <% @post.post_comment.each do |post_comment| %>
-        <div class="border p-3 mb-3">
-          <%= post_comment.user.name %>（<%= post_comment.created_at.strftime('%Y/%m/%d') %>）<br>
-          <%= post_comment.comment %>
-          <% if post_comment.user == current_user %>
-            <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-sm mt-2" %>
-          <% end %>
+      <!--コメントを残す部分-->
+        <div id="comment_index">
+         <%= render "public/post_comments/index", post: @post %>
         </div>
-      <% end %>
+        <!--コメントを記入するフォーマット-->
+        <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
   </div>
 </div>
