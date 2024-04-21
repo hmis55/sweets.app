@@ -4,9 +4,9 @@
     <div class="col-md-4">
       <div class="text-center">
         <% if @post.image.attached? %>
-          <%= image_tag @post.image, class: "img-fluid" %>
+          <%= image_tag @post.image, size: "300x300", class: "img-fluid" %>
         <% else %>
-          <%= image_tag 'no_image.jpg', class: "img-fluid" %>
+          <%= image_tag 'no_image.jpg', size: "300x300", class: "img-fluid" %>
         <% end %>
       </div>
     </div>
