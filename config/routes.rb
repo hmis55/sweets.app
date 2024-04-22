@@ -9,6 +9,7 @@ devise_for :users, skip: [:passwords], controllers: {
 }
    get "/search", to: "searches#search"
 
+  #ユーザー側
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
@@ -31,8 +32,11 @@ devise_for :users, skip: [:passwords], controllers: {
     	get "followings" => "relationships#followings", as: "followings"
     	get "followers" => "relationships#followers", as: "followers"
     end
+    
+    resources :chats, only: [:show, :create, :destroy]
   end
   
+  #管理者側
     namespace :admin do
     root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]

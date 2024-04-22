@@ -19,10 +19,17 @@ class User < ApplicationRecord
  has_many :followers, through: :passive_relationships, source: :follower
 
 
+ has_many :favorites, dependent: :destroy
+
+ #DM機能の関連付け
+ has_many :user_rooms, dependent: :destroy
+ has_many :chats, dependent: :destroy
+ has_many :rooms, through: :user_rooms
+
  #バリデーション
   validates :name, presence: true
   validates :email, presence: true
-  has_many :favorites, dependent: :destroy
+
 
 #ゲストログイン
   GUEST_USER_EMAIL = "guest@example.com"
@@ -48,12 +55,11 @@ class User < ApplicationRecord
     end
   end
 
-#フォローフォロワー機能
+  #フォローフォロワー機能
   # 指定したユーザーをフォローする
   def follow(user)
     active_relationships.create(followed_id: user.id)
   end
-
   # 指定したユーザーのフォローを解除する
   def unfollow(user)
     active_relationships.find_by(followed_id: user.id).destroy

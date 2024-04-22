@@ -32,8 +32,7 @@ before_action :ensure_guest_user, only: [:edit]
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
-
-
+ 
   private
 
   def user_params
