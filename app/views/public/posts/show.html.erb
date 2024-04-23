@@ -9,42 +9,43 @@
         <% end %>
       </div>
     </div>
-    <!--投稿内容とユーザー名などを表示する-->
-    <div class="col-md-8">
-      <h4><投稿者></h4>
-      <h4><%= link_to @post.user.name, user_path(@post.user)%></h4>
-      <h4><タイトル></h4>
-      <h4><%= @post.title %></h4>
-      <h4><説明></h4>
-      <p><%= @post.body %></p>
-      <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-      <!--コメント件数-->
-      <td id="comment_counter">
-        <%= render "public/post_comments/counter", post: @post %>
-      </td>
-      <!--いいね機能-->
-          <% if @post.favorited_by?(current_user) %>
-        <p>
-          <%= link_to post_favorite_path(@post), method: :delete do %>
-            ♥<%= @post.favorites.count %> いいね
-          <% end %>
-        </p>
-          <% else %>
-        <p>
-          <%= link_to post_favorite_path(@post), method: :post do %>
-            ♡<%= @post.favorites.count %> いいね
-          <% end %>
-        </p>
-      <% end %>
-      <!--DM-->
-      <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
-        <%= link_to 'chatを始める', chat_path(@user.id), class: "ml-3" %>
-      <% end %>
-      
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">投稿者</h4>
+          <p class="card-text"><%= link_to @post.user.name, user_path(@post.user) %></p>
+          <h4 class="card-title">タイトル</h4>
+          <p class="card-text"><%= @post.title %></p>
+          <h4 class="card-title">説明</h4>
+          <p class="card-text"><%= @post.body %></p>
+          <p class="card-text">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+          <!-- コメント件数 -->
+          <div id="comment_counter">
+            <%= render "public/post_comments/counter", post: @post %>
+          </div>
+          <div class="btn-group">
+            <% if @post.favorited_by?(current_user) %>
+              <%= link_to post_favorite_path(@post), method: :delete, class: "btn btn-danger" do %>
+                ♥ <%= @post.favorites.count %> いいね
+              <% end %>
+            <% else %>
+              <%= link_to post_favorite_path(@post), method: :post, class: "btn btn-primary" do %>
+                ♡ <%= @post.favorites.count %> いいね
+              <% end %>
+            <% end %>
+            <!-- DM -->
+            <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+              <%= link_to 'chatを始める', chat_path(@user.id), class: "btn btn-info ml-3" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+</div>
   <div class="row mt-4">
-    <div class="col-md-8 offset-md-4">
+    <div class="col-md-6 offset-md-3">
       <h3>コメント</h3>
       <!--コメントを残す部分-->
         <div id="comment_index">

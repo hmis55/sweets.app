@@ -1,3 +1,4 @@
+<div class="container">
 <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャットルーム</h2>
 
 <div class="message" style="width: 400px;">
@@ -12,13 +13,9 @@
     <% end %>
   <% end %>
 </div>
-
-<div class="errors">
-  <%= render "layouts/errors", obj: @chat.errors %>
-</div>
-
 <%= form_with model: @chat, data: { remote: true }, validate: true do |f| %>
   <%= f.text_field :message %>
   <%= f.submit "送信", class: "btn btn-dark btn-sm" %>
   <%= f.hidden_field :room_id %>
 <% end %>
+</div>

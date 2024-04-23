@@ -52,7 +52,7 @@
                   </td>
                   <td><%= link_to post.title, post_path(post) %></td>
                   <td><%= post.body %></td>
-                  <td><%= "#{post.post_comments.count} コメント" %></td>
+                  <td><%= "#{post.post_comment.count} コメント" %></td>
                 </tr>
               <% end %>
             </tbody>

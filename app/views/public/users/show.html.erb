@@ -1,7 +1,7 @@
-<<div class="container">
+<div class="container">
   <div class="row">
     <div class="col-md-6">
-      <table class="table table-borderd">
+      <table class="table table-borderless">
         <tr>
           <th>ユーザー名</th>
           <td><%= @user.name %></td>
@@ -48,7 +48,9 @@
                 <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
                 <p class="card-text"><%= link_to post.user.name, user_path(post.user) %></p>
                 <p></p>
-                <p class="card-text"><%= post.body %></p>
+                <div class="card-text">
+                    <%= truncate(post.body, length: 20, omission: '...') %>
+                </div>
                 <small class="text-muted"><%= "#{post.post_comment.count} コメント" %> ・ <%= "#{post.favorites.count} いいね" %></small>
               </div>
             </div>
