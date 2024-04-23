@@ -33,6 +33,7 @@ devise_for :users, skip: [:passwords], controllers: {
     	get "followers" => "relationships#followers", as: "followers"
     end
     
+    #DM機能
     resources :chats, only: [:show, :create, :destroy]
   end
   

@@ -1,6 +1,5 @@
 <div class='col-md-8 offset-md-1'>
   <h2>投稿一覧</h2>
-  <%= flash[:notice] %>
   <div class="row">
   <% @posts.in_groups_of(3, false).each do |group| %>
     <% group.each do |post| %>
