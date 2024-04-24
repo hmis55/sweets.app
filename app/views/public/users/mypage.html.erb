@@ -5,17 +5,19 @@
       <div class="border mb-xl-3">
       <table class="table table-borderless">
         <tr>
-          <th>ユーザー名</th>
+          <th class = >ユーザー名</th>
           <td><%= @user.name %></td>
         </tr>
         <tr>
           <th>メールアドレス</th>
           <td><%= @user.email %></td>
         </tr>
-          <td>フォロー数</th>
-          <td><%= @user.followings.count %></td>
-          <td>フォロワー数</th>
-          <td><%=@user.followers.count %></td>
+          <th>フォロー数</th>
+          <td><%= @user.followings.count %>人</td>
+        <tr>
+          <th>フォロワー数</th>
+          <td><%=@user.followers.count %>人</td>
+        </tr>
         <% if @user.email != "guest@example.com" %>
           <tr>
             <td colspan="2"><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-primary" %></td>

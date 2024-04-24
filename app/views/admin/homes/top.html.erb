@@ -1,6 +1,5 @@
 <div class='col-md-8 offset-md-1'>
   <h2>会員の投稿一覧ページ</h2>
-<%= flash[:notice] %>
   <table class='table table-hover table-inverse'>
     <thead>
       <th></th>
@@ -20,9 +19,15 @@
            <p><%= link_to post.user.name, admin_user_path(post.user) %></p>
           </td>
           <td><%= link_to post.title, admin_post_path(post) %></td>
-          <td><%= post.body %></td>
+          <td class="card-text">
+            <%= truncate(post.body, length: 20, omission: '...') %>
+          </td>
           <!--コメント数を表示-->
           <td><%= "#{post.post_comment.count} コメント" %></td>
+          <td>
+          <%= link_to "編集", edit_admin_post_path(post), class: "btn btn-primary mr-3" %>
+          <%= link_to "削除", admin_post_path(post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+          </td>
         </tr>
       <% end %>
     </tbody>

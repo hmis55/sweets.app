@@ -1,26 +1,26 @@
-<h1>Sweets Culbへようこそ</h1>
+
+<h1 class="text-center pb-xl-5">Sweets Culbへようこそ</h1>
 
 <div class="container">
   <div class="row justify-content-center mt-3">
     <div class="col-md-4 text-center">
-      <div class="border p-3"><%= link_to "ログインページ", new_user_session_path %></div>
+      <div class="border p-3 rounded bg-warning font-weight-bold"><%= link_to "ログインページ", new_user_session_path, style: "color: black;" %></div>
     </div>
   </div>
 
   <div class="row justify-content-center mt-3">
     <div class="col-md-4 text-center">
-      <div class="border p-3"><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post %></div>
-    </div>
-  </div>
-
-  <div class="row justify-content-center mt-3">
-    <div class="col-md-4 text-center">
-      <div class="p-3"><%= link_to "#", new_admin_registration_path %></div>
+      <div class="border p-3 rounded bg-success font-weight-bold"><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post,style: "color: white;" %></div>
     </div>
   </div>
   <div class="row justify-content-center mt-3">
     <div class="col-md-4 text-center">
-      <div class="border p-3"><%= link_to "管理者ログインページ", new_admin_session_path %></div>
+      <div class="border p-3 rounded bg-secondary font-weight-bold"><%= link_to "管理者ログインページ", new_admin_session_path, style: "color: white;" %></div>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-4 text-center">
+      <div class="p-3 text-white"><%= link_to "#", new_admin_registration_path, class: "text-white" %></div>
     </div>
   </div>
 </div>

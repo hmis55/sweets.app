@@ -7,7 +7,6 @@
       <%= render "public/chats/chat", chat: chat %>
     <% else %>
       <div class="left-container d-flex">
-        <%= image_tag @user.name%>
         <p class=ml-1 style="text-align: left;"><span style="background-color: #F5F5DC; padding: 5px; border-radius: 10px;"><%= chat.message %></span></p>
       </div>
     <% end %>

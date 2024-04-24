@@ -45,7 +45,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_id = @post.id
     @post.destroy
-    redirect_to mypage_path
+    redirect_to mypage_path,notice: "投稿を削除しました."
   end
   # 投稿データのストロングパラメータ
   private

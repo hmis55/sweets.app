@@ -12,13 +12,13 @@
     <div class="col-md-7">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">投稿者</h4>
+          <h4 class="card-title" style="text-decoration: underline;">投稿者</h4>
           <p class="card-text"><%= link_to @post.user.name, user_path(@post.user) %></p>
-          <h4 class="card-title">タイトル</h4>
+          <h4 class="card-title" style="text-decoration: underline;">タイトル</h4>
           <p class="card-text"><%= @post.title %></p>
-          <h4 class="card-title">説明</h4>
+          <h4 class="card-title" style="text-decoration: underline;">説明</h4>
           <p class="card-text"><%= @post.body %></p>
-          <p class="card-text">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+          <p class="card-text" style="text-decoration: underline;">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
           <!-- コメント件数 -->
           <div id="comment_counter">
             <%= render "public/post_comments/counter", post: @post %>
@@ -34,7 +34,7 @@
               <% end %>
             <% end %>
             <!-- DM -->
-            <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+            <% if current_user.present? && current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
               <%= link_to 'chatを始める', chat_path(@user.id), class: "btn btn-info ml-3" %>
             <% end %>
           </div>

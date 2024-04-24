@@ -15,7 +15,5 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     redirect_to post_path(post)
  end
-
-
-
+ 
 end
