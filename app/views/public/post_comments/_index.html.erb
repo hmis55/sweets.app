@@ -1,6 +1,6 @@
 <% post.post_comment.each do |post_comment| %>
   <div class="border p-3 mb-3">
-  <%= post_comment.user.name %>（<%= post_comment.created_at.strftime('%Y/%m/%d') %>）<br>
+  <%= link_to post_comment.user.name, user_path(post_comment.user) %>（<%= post_comment.created_at.strftime('%Y/%m/%d') %>）<br>
   <%= post_comment.comment %>
   <% if post_comment.user == current_user %>
     <!--remote trueで非同期通信実装 -->
