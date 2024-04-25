@@ -19,7 +19,7 @@ before_action :ensure_guest_user, only: [:edit]
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.id), notice: "編集が成功しました."
+      redirect_to mypage_path, notice: "編集が成功しました!"
     else
       render :edit
     end

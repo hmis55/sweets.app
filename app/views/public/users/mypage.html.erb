@@ -38,9 +38,9 @@
             <div class="col-md-6">
               <div class="square-img-wrapper">
                 <% if post.image.attached? %>
-                  <%= image_tag post.image, class: "card-img square-img", style: "object-fit: cover; width: 90%; height: 90%;" %>
+                  <%= image_tag post.image, class: "card-img square-img", style: "object-fit: cover; width: 180px; height: 180px;" %>
                 <% else %>
-                  <%= image_tag 'no_image.jpg', class: "card-img square-img", style: "object-fit: cover; width: 90%; height: 90%;" %>
+                  <%= image_tag 'no_image.jpg', class: "card-img square-img", style: "object-fit: cover; width: 180px; height: 180px;" %>
                 <% end %>
               </div>
             </div>
