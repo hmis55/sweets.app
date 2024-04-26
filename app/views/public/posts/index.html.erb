@@ -1,11 +1,11 @@
-<div class='col-md-8 offset-md-2'>
+<div class='col-md-9 offset-md-2'>
   <h2>投稿一覧</h2>
   <div class="row pt-xl-5">
   <% @posts.in_groups_of(3, false).each do |group| %>
     <% group.each do |post| %>
       <% if post %>
         <div class="col-md-4">
-          <div class="card mb-4" style="height: 250px;">
+          <div class="card mb-4" style="height: 200px;">
             <div class="row no-gutters">
               <div class="col-md-6">
                 <div class="square-img-wrapper">
@@ -18,11 +18,11 @@
               </div>
               <div class="col-md-6">
                 <div class="card-body">
-                  <h5 class="card-title"><%= link_to post.title, post_path(post.id) %></h5>
+                  <h6 class="card-title"><%= link_to post.title, post_path(post.id) %></h6>
                   <p class="card-text"><%= link_to post.user.name, user_path(post.user) %></p>
                   <p></p>
                   <div class="card-text ">
-                    <%= truncate(post.body, length: 20, omission: '...') %>
+                    <%= truncate(post.body, length: 10, omission: '...') %>
                   </div>
                   <small class="text-muted"><%= "#{post.post_comment.count} コメント" %> ・ <%= "#{post.favorites.count} いいね" %></small>
                 </div>
