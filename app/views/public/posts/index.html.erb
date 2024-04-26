@@ -24,7 +24,7 @@
                   <div class="card-text ">
                     <%= truncate(post.body, length: 10, omission: '...') %>
                   </div>
-                  <small class="text-muted"><%= "#{post.post_comment.count} コメント" %> ・ <%= "#{post.favorites.count} いいね" %></small>
+                  <small class="text-muted"><%= "#{post.post_comment.count} コメント" %>  <%= "#{post.favorites.count} いいね" %></small>
                 </div>
               </div>
             </div>
