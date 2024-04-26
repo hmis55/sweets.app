@@ -32,3 +32,55 @@ end
   user.name = "木村太郎"
   user.password = "555555"
 end
+
+
+#ユーザーの投稿
+Post.find_or_create_by!(title: "いちごのケーキ", user: 山田太郎) do |post|
+  post.body = "ケーキを作りました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/cake.jpg"), filename:"cake.jpg")
+end
+
+Post.find_or_create_by!(title: "ドーナツ", user: 山田太郎) do |post|
+  post.body = "オールドファッションをつくりました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/donut.jpg"), filename:"donut.jpg")
+end
+
+Post.find_or_create_by!(title: "ドーナツ", user: 佐藤次郎) do |post|
+  post.body = "オールドファッションをつくりました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/donut.jpg"), filename:"donut.jpg")
+end
+
+Post.find_or_create_by!(title: "ブッシュドノエル", user: 佐藤次郎) do |post|
+  post.body = "クリスマスにブッシュドノエルを作りました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/noel.jpg"), filename:"noel.jpg")
+end
+
+Post.find_or_create_by!(title: "ブッシュドノエル", user: 鈴木一郎) do |post|
+  post.body = "クリスマスにブッシュドノエルを作りました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/noel.jpg"), filename:"noel.jpg")
+end
+
+Post.find_or_create_by!(title: "たまごプリン", user: 鈴木一郎) do |post|
+  post.body = "たまごプリンを作りました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/purine.jpg"), filename:"purine.jpg")
+end
+
+Post.find_or_create_by!(title: "ロールパン", user: 田中太郎) do |post|
+  post.body = "ロールパンを作りました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/raulpan.jpg"), filename:"raulpan.jpg")
+end
+
+Post.find_or_create_by!(title: "シュークリーム", user: 田中太郎) do |post|
+  post.body = "シュークリームを生地から作りました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/shucream.jpg"), filename:"shucream.jpg")
+end
+
+Post.find_or_create_by!(title: "チョコケーキ", user: 田中太郎) do |post|
+  post.body = "チョコケーキを作りました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/chocola.JPG"), filename:"chocola.JPG")
+end
+
+Post.find_or_create_by!(title: "ケーキ", user: 木村太郎) do |post|
+  post.body = "ケーキを作りました。"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/cake.jpg"), filename:"cake.jpg")
+end
