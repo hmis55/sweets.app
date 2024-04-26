@@ -25,7 +25,7 @@ class Public::PostCommentsController < ApplicationController
   
   def ensure_guest_user
     if current_user.email == "guest@example.com"
-      redirect_to user_path(current_user), notice: "この機能は会員登録後に使用可能となります。"
+      redirect_to posts_path, notice: "この機能は会員登録後に使用可能となります。"
     end
   end
 

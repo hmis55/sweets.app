@@ -1,5 +1,5 @@
 class Public::ChatsController < ApplicationController
-    # showアクションにおいて、関連のないユーザーをブロックする
+  before_action :authenticate_user!
   before_action :block_non_related_users, only: [:show]
 
   # チャットルームの表示
