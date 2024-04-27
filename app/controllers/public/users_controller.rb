@@ -27,12 +27,13 @@ before_action :ensure_guest_user, only: [:edit]
 
   #退会機能
   def withdraw
-    current_user.update(is_active: false)
+    @userr = User.find(current_user.id)
+    @current_user.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
- 
+
   private
 
   def user_params
@@ -44,16 +45,15 @@ before_action :ensure_guest_user, only: [:edit]
   end
 
   def is_matching_login_user
-    user = User.find(params[:id])
+    user = User.find(current_user.id)
     unless user.id == current_user.id
-      redirect_to root_path
+      redirect_to new_user_session_path
     end
   end
-  
+
   def ensure_guest_user
     if current_user.email == "guest@example.com"
       redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-end    
-   
+end
