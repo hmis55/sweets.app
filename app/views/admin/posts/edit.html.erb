@@ -2,23 +2,25 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <h2>投稿編集ページ</h2>
+
       <%= render 'layouts/errors', obj: @post%>
+
       <%= form_with model: @post, url: post_path(@post.id),method: :patch do |f| %>
-      <div class="form-group">
-         <h4>画像</h4>
-         <%= f.file_field :image, class: "form-control-file", accept: "image/*" %>
-      </div>
-      <div class="form-group">
-       <h4>タイトル</h4>
-         <%= f.text_field :title, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <h4>説明</h4>
-         <%= f.text_area :body, class: "form-control", rows: 3 %>
-      </div>
-      <div class="form-group">
-        <%= f.submit '保存する', class: "btn btn-primary" %>
-      </div>
+        <div class="form-group">
+           <h4>画像</h4>
+           <%= f.file_field :image, class: "form-control-file", accept: "image/*" %>
+        </div>
+        <div class="form-group">
+         <h4>タイトル</h4>
+           <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <h4>説明</h4>
+           <%= f.text_area :body, class: "form-control", rows: 3 %>
+        </div>
+        <div class="form-group">
+          <%= f.submit '保存する', class: "btn btn-primary" %>
+        </div>
      <% end %>
     </div>
   </div>

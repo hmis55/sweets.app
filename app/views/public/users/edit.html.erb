@@ -1,27 +1,27 @@
 <div class='col-md-8 offset-md-2'>
-<%= render 'layouts/errors', obj: @user%>
-
-<h4>会員情報編集ページ</h4>
-<%= form_with model: @user, url: user_path, method: :patch do |f| %>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-5">
-        <table class="table">
-          <tr>
-            <th>登録名</th>
-            <td><%= f.text_field :name, class: "form-control" %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= f.text_field :email, class: "form-control" %></td>
-          </tr>
-        </table>
-        <div class="text-center">
-          <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-          <%= link_to "退会する", users_unsubscribe_path, class: "btn btn-danger" %>
+  <%= render 'layouts/errors', obj: @user%>
+  
+  <h4>会員情報編集ページ</h4>
+  <%= form_with model: @user, url: user_path, method: :patch do |f| %>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <table class="table">
+            <tr>
+              <th>登録名</th>
+              <td><%= f.text_field :name, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= f.text_field :email, class: "form-control" %></td>
+            </tr>
+          </table>
+          <div class="text-center">
+            <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+            <%= link_to "退会する", users_unsubscribe_path, class: "btn btn-danger" %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>

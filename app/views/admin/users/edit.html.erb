@@ -4,42 +4,39 @@
       <!--タイトル-->
       <h4 class="col-4 mt-3 bg-light text-center"><%= @user.name %>さんの会員情報編集</h4>
       <div class="col-lg-9 mt-5">
-        <%= form_with model: @user, url: admin_user_path(@user), method: :patch, local:true do |f| %>
-          <table class="table table-borderless">
-            <tr>
-              <th><%= f.label :id, '会員ID' %></th>
-              <td><%= @user.id %></td>
-            </tr>
-            <!--氏名入力-->
-            <tr>
-              <th><%= f.label :name, '名前' %></th>
-              <td><%= f.text_field :name, class: 'form-control' %></td>
-            </tr>
-            <!--メールアドレス-->
-            <tr>
-              <th><%= f.label :email, 'メールアドレス' %></th>
-              <td><%= f.text_field :email, class: 'form-control'%></td>
-            </tr>
-            <!--会員ステータス-->
-            <tr>
-              <th><%= f.label :is_active, '会員ステータス' %></th>
-              <td>
-                <%= f.radio_button :is_active, 'true' %>有効
-                <%= f.radio_button :is_active, 'false' %>退会
-              </td>
-            </tr>
-            <tr>
-              <td><%= f.submit '変更を保存', class: 'btn btn-success' %></td>
-            </tr>
-          </table>
-        <% end %>
-
-        <div class="row mx-auto">
+      <%= form_with model: @user, url: admin_user_path(@user), method: :patch, local:true do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <th><%= f.label :id, '会員ID' %></th>
+            <td><%= @user.id %></td>
+          </tr>
+          <!--氏名入力-->
+          <tr>
+            <th><%= f.label :name, '名前' %></th>
+            <td><%= f.text_field :name, class: 'form-control' %></td>
+          </tr>
+          <!--メールアドレス-->
+          <tr>
+            <th><%= f.label :email, 'メールアドレス' %></th>
+            <td><%= f.text_field :email, class: 'form-control'%></td>
+          </tr>
+          <!--会員ステータス-->
+          <tr>
+            <th><%= f.label :is_active, '会員ステータス' %></th>
+            <td>
+               <%= f.radio_button :is_active, 'true' %>有効
+               <%= f.radio_button :is_active, 'false' %>退会
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.submit '変更を保存', class: 'btn btn-success' %></td>
+          </tr>
+        </table>
+      <% end %>
+      <div class="row mx-auto">
           <%= link_to '会員一覧に戻る', admin_users_path, class: 'btn btn-secondary mx-auto' %>
-        </div>
-
       </div>
-    </div><!--col-->
-
-  </div><!--row-->
-</div><!--container-->
+      </div>
+    </div>
+  </div>
+</div>
