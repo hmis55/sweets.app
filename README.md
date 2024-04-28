@@ -21,7 +21,15 @@
 ・同じ趣味の人と交流したい時
 
 ## 設計書
-​
+ER図</br>
+![ポートフォリオ　ER図](https://github.com/hmis55/sweets.app/assets/158746092/4ffc1c21-f50a-48d0-93a7-1d3e1e8de632)
+</br>
+
+UIFlows(ユーザ側)</br>
+![ポートフォリオ制作_UIFlows_-エンドユーザー](https://github.com/hmis55/sweets.app/assets/158746092/d7e69b4e-771a-4eb1-ae3a-cde951745808)
+
+UIFlows(管理者側)</br>
+![ポートフォリオ制作_UIFlows_-管理者](https://github.com/hmis55/sweets.app/assets/158746092/bdf95e1f-5edc-431f-9b3a-1dc5366224be)
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -29,3 +37,5 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 ​
+##　使用素材
+使用素材は、自分で撮影した画像を使用しています。
