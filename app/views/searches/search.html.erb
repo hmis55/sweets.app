@@ -14,13 +14,6 @@
             <tbody>
               <% @records.each do |user| %>
                 <tr>
-                  <td>
-                    <% if user.image.attached? %>
-                      <%= image_tag user.image, size: "100x100", class: "img-thumbnail" %>
-                    <% else %>
-                      <%= image_tag 'no_image', size: "100x100", class: "img-thumbnail" %>
-                    <% end %>
-                  </td>
                   <td><%= link_to user.name, user_path(user) %></td>
                 </tr>
               <% end %>
