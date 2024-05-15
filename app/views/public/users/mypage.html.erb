@@ -13,11 +13,18 @@
             <td><%= @user.email %></td>
           </tr>
             <th>フォロー数</th>
-            <td><% linl to </td>
-            <td><%= @user.followings.count %>人</td>
+            <td>
+              <%= link_to user_followings_path(@user) do %>
+               <%= @user.followings.count %> 人
+              <% end %>
+            </td>
           <tr>
             <th>フォロワー数</th>
-            <td><%=@user.followers.count %>人</td>
+            <td>
+              <%= link_to user_followers_path(@user) do %>
+                <%= @user.followers.count %> 人
+              <% end %>
+            </td>
           </tr>
           <% if @user.email != "guest@example.com" %>
             <tr>
