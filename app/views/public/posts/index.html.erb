@@ -1,3 +1,26 @@
+<!-- いいねランキング -->
+<h5>いいね数 ランキング！！</h5>
+<div class="row">
+  <% last_favorite_count = nil %>
+  <% rank = 0 %>
+  <% @post_favorite_ranks.each do |post| %>
+    <% if last_favorite_count != post.favorites.count %>
+      <% rank += 1 %>
+    <% end %>
+    <div class="col　col--3">
+      <div class="card">
+        <div class="card-body">
+          <h6><b>第<%= rank %>位</b></h6>
+          <%= image_tag post.image, class: "card-img square-img", style: "object-fit: cover; width: 150px; height: 150px;" %>
+          <p><%= link_to post.title, post_path(post.id) %></p>
+          <p><%= post.favorites.count %>回</p>
+        </div>
+      </div>
+    </div>
+    <% last_favorite_count = post.favorites.count %>
+  <% end %>
+</div>
+
 <div class='col-md-9 offset-md-2'>
   <h2>投稿一覧</h2>
   <div class="row pt-xl-5">
