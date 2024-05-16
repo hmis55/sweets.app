@@ -21,7 +21,10 @@
 ・同じ趣味の人と交流したい時
 
 ## 設計書
-ER図</br>
+・AWS構成図</br>
+![AWS構成図](https://github.com/hmis55/ouyou-8a/assets/158746092/64d7cd89-3bec-4c91-9c3c-11149a357525)
+
+・ER図</br>
 ![ポートフォリオ　ER図](https://github.com/hmis55/sweets.app/assets/158746092/4ffc1c21-f50a-48d0-93a7-1d3e1e8de632)
 </br>
 
@@ -30,12 +33,13 @@ UIFlows(ユーザ側)</br>
 
 UIFlows(管理者側)</br>
 ![ポートフォリオ制作_UIFlows_-管理者](https://github.com/hmis55/sweets.app/assets/158746092/bdf95e1f-5edc-431f-9b3a-1dc5366224be)
-## 開発環境
+
+### 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-​
-##　使用素材
-使用素材は、自分で撮影した画像を使用しています。
+
+### 使用素材
+使用素材は、製作者が撮影した画像を使用しています。
