@@ -1,4 +1,5 @@
 <!-- いいねランキング -->
+<div class='col-md-9 offset-md-3'>
 <h5>いいね数 ランキング！！</h5>
 <div class="row">
   <% last_favorite_count = nil %>
@@ -7,31 +8,32 @@
     <% if last_favorite_count != post.favorites.count %>
       <% rank += 1 %>
     <% end %>
-    <div class="col　col--3">
-      <div class="card">
+    <div class="col col-3">
+      <div class="card ">
         <div class="card-body">
           <h6><b>第<%= rank %>位</b></h6>
-          <%= image_tag post.image, class: "card-img square-img", style: "object-fit: cover; width: 150px; height: 150px;" %>
-          <p><%= link_to post.title, post_path(post.id) %></p>
-          <p><%= post.favorites.count %>回</p>
+          　<div class="image text-center">
+             <%= image_tag post.image, class: "card-img square-img ", style: "object-fit: cover; width: 150px; height: 150px;" %>
+          <p><%= link_to post.title, post_path(post.id) %> <i class="fa-solid fa-thumbs-up"></i><%= post.favorites.count %></p>
+        </div>
         </div>
       </div>
     </div>
     <% last_favorite_count = post.favorites.count %>
   <% end %>
 </div>
-
-<div class='col-md-9 offset-md-2'>
-  <h2>投稿一覧</h2>
-  <div class="row pt-xl-5">
+</div>
+<div class='col-md-9 offset-md-2 mt-md-4'>
+  <h4>みんなの投稿</h4>
+  <div class="row pt-xl-4">
   <% @posts.in_groups_of(3, false).each do |group| %>
     <% group.each do |post| %>
       <% if post %>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="card mb-4" style="height: 200px;">
             <div class="row no-gutters">
               <div class="col-md-6">
-                <div class="square-img-wrapper">
+                <div class="square-img-wrapper m-md-4">
                   <% if post.image.attached? %>
                     <%= image_tag post.image, class: "card-img square-img", style: "object-fit: cover; width: 150px; height: 150px;" %>
                   <% else %>
