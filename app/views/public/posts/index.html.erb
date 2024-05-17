@@ -1,4 +1,4 @@
-<!-- いいねランキング -->
+<!-- ランキング -->
 <div class='col-md-9 offset-md-3'>
   <h5>いいね数 ランキング</h5>
   <div class="row">
@@ -12,9 +12,9 @@
         <div class="card ">
           <div class="card-body">
             <h6><b>第<%= rank %>位</b></h6>
-            　<div class="image text-center">
+            　<div class="image text-center ">
                <%= image_tag post.image, class: "card-img square-img ", style: "object-fit: cover; width: 150px; height: 150px;" %>
-            <p><%= link_to post.title, post_path(post.id) %> <i class="fa-solid fa-thumbs-up"></i><%= post.favorites.count %></p>
+            <p class= "mt-md-3"><%= link_to post.title, post_path(post.id),class: "text-dark"%> <i class="fa-solid fa-thumbs-up"></i><%= post.favorites.count %></p>
           </div>
           </div>
         </div>
@@ -26,31 +26,31 @@
 <div class='col-md-9 offset-md-2 mt-md-4'>
   <h4>みんなの投稿</h4>
   <div class="row pt-xl-4">
-  <% @posts.in_groups_of(3, false).each do |group| %>
-    <% group.each do |post| %>
-      <% if post %>
-        <div class="col-md-3 mb-3">
-          <div class="shadow-sm">
-            <div class="text-center">
-              <% if post.image.attached? %>
-                <%= image_tag post.image, class: "img-fluid", style: "object-fit: cover; width: 200px; height: 200px;" %>
-              <% else %>
-                <%= image_tag 'no_image.jpg', class: "img-fluid", style: "object-fit: cover; width: 200px; height: 200px;" %>
-              <% end %>
-            </div>
-            <div class="mt-2 p-3">
-              <h5 class="card-title"><%= link_to post.title, post_path(post.id), class: "text-dark" %></h5>
-              <p class="card-text text-muted"><%= link_to post.user.name, user_path(post.user) %></p>
-              <p class="card-text"><%= truncate(post.body, length: 30, omission: '...') %></p>
-              <div class="d-flex align-items-center">
-                <small class="text-muted"><%= "#{post.post_comments.count} コメント" %></small>
-                <small class="text-muted"><%= "#{post.favorites.count} いいね" %></small>
+    <% @posts.in_groups_of(3, false).each do |group| %>
+      <% group.each do |post| %>
+        <% if post %>
+          <div class="col-md-3 mb-3">
+            <div class="shadow-sm">
+              <div class="text-center">
+                <% if post.image.attached? %>
+                  <%= image_tag post.image, class: "img-fluid", style: "object-fit: cover; width: 200px; height: 200px;" %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', class: "img-fluid", style: "object-fit: cover; width: 200px; height: 200px;" %>
+                <% end %>
+              </div>
+              <div class="mt-2 p-3">
+                <h5 class="card-title"><%= link_to post.title, post_path(post.id), class: "text-dark" %></h5>
+                <p class="card-text text-muted"><%= link_to post.user.name, user_path(post.user),class: "text-dark"%></p>
+                <p class="card-text"><%= truncate(post.body, length: 20, omission: '...') %></p>
+                <div class="d-flex align-items-center">
+                  <small class="text-muted"><%= "#{post.post_comments.count} コメント" %></small>
+                  <small class="text-muted"><%= "#{post.favorites.count} いいね" %></small>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
 </div>
