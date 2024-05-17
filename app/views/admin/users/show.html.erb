@@ -42,7 +42,7 @@
         <td><%= link_to post.title, admin_post_path(post)%></td>
         <td><%= post.body %></td>
          <!--コメント数を表示-->
-         <td><%= "#{post.post_comment.count} コメント" %></td>
+         <td><%= "#{post.post_comments.count} コメント" %></td>
       </tr>
      <% end %>
   </tboy>

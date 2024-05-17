@@ -23,7 +23,7 @@
             <%= truncate(post.body, length: 20, omission: '...') %>
           </td>
           <!--コメント数を表示-->
-          <td><%= "#{post.post_comment.count} コメント" %></td>
+          <td><%= "#{post.post_comments.count} コメント" %></td>
           <td>
           <%= link_to "編集", edit_admin_post_path(post), class: "btn btn-primary mr-3" %>
           <%= link_to "削除", admin_post_path(post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>

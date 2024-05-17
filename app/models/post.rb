@@ -2,9 +2,9 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   belongs_to :user
-  has_many :post_comment, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   #いいね機能
   def favorited_by?(user)
    user.present? && favorites.exists?(user_id: user.id)
