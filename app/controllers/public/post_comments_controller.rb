@@ -22,7 +22,7 @@ class Public::PostCommentsController < ApplicationController
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
-  
+
   def ensure_guest_user
     if current_user.email == "guest@example.com"
       redirect_to posts_path, notice: "この機能は会員登録後に使用可能となります。"
