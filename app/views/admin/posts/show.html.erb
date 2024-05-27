@@ -30,11 +30,11 @@
   <div class="row mt-4">
     <div class="col-md-8">
       <h3>コメント</h3>
-      <% @post.post_comment.each do |post_comment| %>
+      <% @post.post_comments.each do |post_comments| %>
         <div class="border p-3 mb-3">
-          <%= post_comment.user.name %>（<%= post_comment.created_at.strftime('%Y/%m/%d') %>）<br>
-          <%= post_comment.comment %>
-          <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-sm mt-2" %>
+          <%= post_comments.user.name %>（<%= post_comments.created_at.strftime('%Y/%m/%d') %>）<br>
+          <%= post_comments.comment %>
+          <%= link_to "削除", admin_post_post_comment_path(post_comments.post, post_comments), method: :delete, class: "btn btn-danger btn-sm mt-2" %>
         </div>
       <% end %>
     </div>
