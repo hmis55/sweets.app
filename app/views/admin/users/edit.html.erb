@@ -22,12 +22,15 @@
           </tr>
           <!--会員ステータス-->
           <tr>
-            <th><%= f.label :is_active, '会員ステータス' %></th>
-            <td>
-               <%= f.radio_button :is_active, 'true' %>有効
-               <%= f.radio_button :is_active, 'false' %>退会
-            </td>
-          </tr>
+           <th><%= f.label :is_active, '会員ステータス' %></th>
+           <td>
+              <%= f.label :is_active_true do %>
+                <%= f.radio_button :is_active, 'true' %> 有効
+              <% end %>
+              <%= f.label :is_active_false do %>
+                <%= f.radio_button :is_active, 'false' %> 退会
+              <% end %>
+           </td>
           <tr>
             <td><%= f.submit '変更を保存', class: 'btn btn-success' %></td>
           </tr>

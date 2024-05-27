@@ -45,7 +45,7 @@ before_action :ensure_guest_user, only: [:edit]
   end
 
   def is_matching_login_user
-    user = User.find(current_user.id)
+    user = User.find(params[:id])
     unless user.id == current_user.id
       redirect_to new_user_session_path
     end
