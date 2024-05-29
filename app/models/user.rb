@@ -5,17 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
  has_one_attached :image
 
- #投稿との関連付け
+ #フォロー機能関連付け
  has_many :post, dependent: :destroy
- #コメントとの関連付け
  has_many :post_comment, dependent: :destroy
- # フォローしている関連付け
  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
- # フォローされている関連付け
  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
- # フォローしているユーザーを取得
  has_many :followings, through: :active_relationships, source: :followed
- # フォロワーを取得
  has_many :followers, through: :passive_relationships, source: :follower
 
 
