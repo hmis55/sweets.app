@@ -24,7 +24,9 @@
   </div>
 </div>
 <div class='col-md-9 offset-md-2 mt-md-4'>
-  <h4>みんなの投稿</h4>
+  <h4>投稿一覧</h4>
+  <%= link_to '新着順', posts_path(latest: "true") %>
+  <%= link_to '古い順', posts_path(old: "true") %>
   <div class="row pt-xl-4">
     <% @posts.in_groups_of(3, false).each do |group| %>
       <% group.each do |post| %>
@@ -42,6 +44,7 @@
                 <h5 class="card-title"><%= link_to post.title, post_path(post.id), class: "text-dark" %></h5>
                 <p class="card-text text-muted"><%= link_to post.user.name, user_path(post.user),class: "text-dark"%></p>
                 <p class="card-text"><%= truncate(post.body, length: 20, omission: '...') %></p>
+                <small class="text-muted"><%= post.created_at.strftime('%m/%d %H:%M') %></small>
                 <div class="d-flex align-items-center">
                   <small class="text-muted"><%= "#{post.post_comments.count} コメント" %></small>
                   <small class="text-muted"><%= "#{post.favorites.count} いいね" %></small>

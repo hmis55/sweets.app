@@ -19,8 +19,17 @@ class Public::PostsController < ApplicationController
 
   def index
    @posts = Post.all
-   @post_favorite_ranks = @posts.joins(:favorites).group(:id).order('COUNT(favorites.id) DESC').limit(3)
-   @follower_ranks = User.joins(:followers).group(:id).order('COUNT(users.id) DESC').limit(3)
+    # ソート機能
+    if params[:latest]
+     @posts = Post.latest
+    elsif params[:old]
+     @posts = Post.old
+    else
+     @posts = Post.all
+    end
+    
+    @post_favorite_ranks = @posts.joins(:favorites).group(:id).order('COUNT(favorites.id) DESC').limit(3)
+    @follower_ranks = User.joins(:followers).group(:id).order('COUNT(users.id) DESC').limit(3)
   end
 
   def show

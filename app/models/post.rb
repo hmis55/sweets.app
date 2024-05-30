@@ -27,4 +27,8 @@ class Post < ApplicationRecord
         Post.where('title LIKE ?', "%#{content}%")
     end
   end
+  
+  #投稿順
+  scope :latest, -> { order(created_at: :desc) }
+  scope :old, -> { order(created_at: :asc) }
 end
